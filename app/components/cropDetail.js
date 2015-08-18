@@ -88,8 +88,10 @@ class CropDetail extends React.Component {
     // and dates need to be comma separated in the constructor
     // also, the dates are zero based.
     // only need the month and the day
-    var date = new Date(date);
-    return date.getDate();
+    var now = moment().format('MMM Do YY');
+    // var date = new Date(date);
+    // return date.getDate();
+    return now;
   }
   render() {
     return (
@@ -109,7 +111,7 @@ class CropDetail extends React.Component {
           <View style={ style.rowContainer }>
             <View style={ style.dateContainer }>
               <Text style={ style.date }>Start Date:</Text>
-              <Text style={style.date }>{ this.props.crop.plant_start_date }</Text>
+              <Text style={style.date }>{ this.formatDate(this.props.crop.plant_start_date) }</Text>
             </View>
             <View style={ style.dateContainer }>
               <Text style={ style.date }>End Date:</Text>
