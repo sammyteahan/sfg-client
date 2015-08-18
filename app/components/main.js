@@ -56,7 +56,7 @@ class Main extends React.Component {
       username: '',
       isLoading: false,
       error: false,
-      headerContent: 'Fresh'
+      headerContent: 'Square Foot Gardening'
     }
   }
   handleSubmit() {

@@ -82,6 +82,14 @@ class CropDetail extends React.Component {
   getSeed(value) {
     return value ? 'Yes' : 'No';
   }
+  formatDate(date) {
+    // is a string duuuuuh
+    // and dates need to be comma separated in the constructor
+    // also, the dates are zero based.
+    // only need the month and the day
+    var date = new Date(date);
+    return date.getDate();
+  }
   render() {
     return (
       <ScrollView>
