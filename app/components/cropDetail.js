@@ -2,6 +2,7 @@ var React = require('react-native');
 var Separator = require('../helpers/separator');
 var Header = require('./header');
 var Switch = require('../helpers/switch');
+var moment = require('moment');
 
 
 var {
