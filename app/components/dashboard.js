@@ -9,20 +9,33 @@ var {
   View,
   StyleSheet,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  ActivityIndicatorIOS
 } = React;
 
 
 var style = StyleSheet.create({
   container: {
+    flex: 1,
     marginTop: 65,
-    flex: 1
+    backgroundColor: '#32526E',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  loader: {
+    alignSelf: 'center',
+    marginBottom: 10
   },
   header: {
     backgroundColor: '#32526E',
-    height: 300,
+    height: 250,
     padding: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontSize: 18
   },
   image: {
     height: 350,
@@ -36,9 +49,15 @@ var style = StyleSheet.create({
 
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+  }
   makeBackground(btn) {
     var styleObj = {
-      flexDirection: 'row',
+      flexDirection: 'column',
       alignSelf: 'stretch',
       justifyContent: 'center',
       flex: 1
@@ -55,6 +74,9 @@ class Dashboard extends React.Component {
     return styleObj;
   }
   goToSummer() {
+    this.setState({
+      isLoading: true
+    });
     api.getSeasonCrops('summer').then((response) => {
       this.props.navigator.push({
         title: 'Summer Crops',
@@ -65,9 +87,15 @@ class Dashboard extends React.Component {
           season: 1
         }
       });
+      this.setState({
+        isLoading: false
+      });
     });
   }
   goToSpring() {
+    this.setState({
+      isLoading: true
+    });
     api.getSeasonCrops('spring').then((response) => {
       this.props.navigator.push({
         title: 'Spring Crops',
@@ -78,9 +106,15 @@ class Dashboard extends React.Component {
           season: 2
         }
       });
+      this.setState({
+        isLoading: false
+      });
     });
   }
   goToFall() {
+    this.setState({
+      isLoading: true
+    });
     api.getSeasonCrops('fall').then((response) => {
       this.props.navigator.push({
         title: 'Fall Crops',
@@ -91,9 +125,15 @@ class Dashboard extends React.Component {
           season: 3
         }
       });
+      this.setState({
+        isLoading: false
+      });
     });
   }
   goToWinter() {
+    this.setState({
+      isLoading: true
+    });
     api.getSeasonCrops('winter').then((response) => {
       this.props.navigator.push({
         title: 'Winter Crops',
@@ -104,12 +144,20 @@ class Dashboard extends React.Component {
           season: 4
         }
       });
+      this.setState({
+        isLoading: false
+      });
     });
   }
   render() {
     return (
       <View style={ style.container }>
-        <Header style={ style.header } content='Square Foot Gardening' />
+        <Header style={ style.header } content='Fresh' />
+        <ActivityIndicatorIOS
+          animating={ this.state.isLoading }
+          color='#ecf0f1'
+          style={ style.loader }
+          size='large'></ActivityIndicatorIOS>
         <TouchableHighlight
           style={ this.makeBackground(0) }
           onPress={ this.goToSpring.bind(this) }

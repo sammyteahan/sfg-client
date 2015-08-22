@@ -36,6 +36,7 @@ var style = StyleSheet.create({
   },
   date: {
     justifyContent: 'center',
+    color: '#484848',
     fontSize: 18
   },
   header: {
@@ -100,7 +101,7 @@ class CropDetail extends React.Component {
           <View style={ style.rowContainer }>
             <View style={ style.dateContainer }>
               <Text style={ style.date }>Start Date:</Text>
-              <Text style={style.date }>{ this.props.crop.plant_start_date }</Text>
+              <Text style={ style.date }>{ this.props.crop.plant_start_date }</Text>
             </View>
             <View style={ style.dateContainer }>
               <Text style={ style.date }>End Date:</Text>

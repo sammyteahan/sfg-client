@@ -4,13 +4,14 @@ var {
   Text,
   View,
   Image,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicatorIOS
 } = React;
 
 var style = StyleSheet.create({
   container: {
     backgroundColor: '#32526E',
-    height: 300,
+    height: 250,
     padding: 10,
     justifyContent: 'center'
   },

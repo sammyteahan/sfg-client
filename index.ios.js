@@ -14,6 +14,7 @@ var {
   Text,
   View,
   NavigatorIOS,
+  StatusBarIOS
 } = React;
 
 
@@ -30,8 +31,9 @@ class sfg extends React.Component {
     return (
       <NavigatorIOS
         style={ style.container }
+        // navigationBarHidden='true'
         initialRoute={{
-          title: 'SFG',
+          title: 'Square Foot Gardening',
           component: Dashboard
         }} />
     );

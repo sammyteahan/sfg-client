@@ -19,7 +19,7 @@ var style = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 300,
+    height: 250,
     padding: 10,
     justifyContent: 'center'
   },
@@ -27,6 +27,17 @@ var style = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     padding: 10
+  },
+  singleRow: {
+    height: 100,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noData: {
+    fontSize: 20,
+    color: '#484848',
   },
   name: {
     color: '#484848',
@@ -48,10 +59,10 @@ var style = StyleSheet.create({
 class Dashboard extends React.Component {
   makeBackground(btn) {
     var styleObj = {
-      height: 300,
+      height: 250,
       padding: 10,
       justifyContent: 'center'
-    }
+    };
     if(this.props.season === 1) {
       styleObj.backgroundColor = '#FF884D';
     } else if(this.props.season === 2) {
@@ -86,21 +97,35 @@ class Dashboard extends React.Component {
   }
   render() {
     var crops = this.props.crops;
-    var list = crops.map((item, index) => {
-      return (
-        <View key={ index }>
-          <View style={ style.rowContainer }>
-            <TouchableHighlight
-              onPress={ this.cropDetail.bind(this, crops[index].pk) }
-              underlayColor='transparent'>
-              <Text style={ style.name }>{ crops[index].name }</Text>
-            </TouchableHighlight>
-            <Text style={ style.tierStyle }>Success Rate: { this.getTier(crops[index].tier) }</Text>
+    var list;
+    if (crops.length === 0) {
+      crops.push(1);
+      list = crops.map((item, index) => {
+        return (
+          <View key={ index }>
+            <View style={ style.singleRow }>
+              <Text style={ style.noData }>No data to display here yet</Text>
+            </View>
           </View>
-          <Separator />
-        </View>
-      )
-    });
+        )
+      });
+    } else {
+      list = crops.map((item, index) => {
+        return (
+          <View key={ index }>
+            <View style={ style.rowContainer }>
+              <TouchableHighlight
+                onPress={ this.cropDetail.bind(this, crops[index].pk) }
+                underlayColor='transparent'>
+                <Text style={ style.name }>{ crops[index].name }</Text>
+              </TouchableHighlight>
+              <Text style={ style.tierStyle }>Success Rate: { this.getTier(crops[index].tier) }</Text>
+            </View>
+            <Separator />
+          </View>
+        )
+      });
+    }
     return (
       <ScrollView style={ style.container }>
         <Header style={ this.makeBackground() } content={ this.props.headerTitle } />
