@@ -2,6 +2,7 @@ var React = require('react-native');
 var Separator = require('../helpers/separator');
 var Header = require('./header');
 var Switch = require('../helpers/switch');
+var moment = require('moment');
 
 
 var {
@@ -82,6 +83,16 @@ class CropDetail extends React.Component {
   getSeed(value) {
     return value ? 'Yes' : 'No';
   }
+  formatDate(date) {
+    // is a string duuuuuh
+    // and dates need to be comma separated in the constructor
+    // also, the dates are zero based.
+    // only need the month and the day
+    var now = moment().format('MMM Do YY');
+    // var date = new Date(date);
+    // return date.getDate();
+    return now;
+  }
   render() {
     return (
       <ScrollView>
@@ -100,7 +111,7 @@ class CropDetail extends React.Component {
           <View style={ style.rowContainer }>
             <View style={ style.dateContainer }>
               <Text style={ style.date }>Start Date:</Text>
-              <Text style={style.date }>{ this.props.crop.plant_start_date }</Text>
+              <Text style={style.date }>{ this.formatDate(this.props.crop.plant_start_date) }</Text>
             </View>
             <View style={ style.dateContainer }>
               <Text style={ style.date }>End Date:</Text>
