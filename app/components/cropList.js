@@ -19,7 +19,7 @@ var style = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 300,
+    height: 200,
     padding: 10,
     justifyContent: 'center'
   },
@@ -48,7 +48,7 @@ var style = StyleSheet.create({
 class Dashboard extends React.Component {
   makeBackground(btn) {
     var styleObj = {
-      height: 300,
+      height: 200,
       padding: 10,
       justifyContent: 'center'
     }

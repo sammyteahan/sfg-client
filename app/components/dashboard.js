@@ -20,7 +20,7 @@ var style = StyleSheet.create({
   },
   header: {
     backgroundColor: '#32526E',
-    height: 300,
+    height: 200,
     padding: 10,
     justifyContent: 'center'
   },
@@ -109,7 +109,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <View style={ style.container }>
-        <Header style={ style.header } content='Square Foot Gardening' />
+        <Header style={ style.header } content='SFG' />
         <TouchableHighlight
           style={ this.makeBackground(0) }
           onPress={ this.goToSpring.bind(this) }
