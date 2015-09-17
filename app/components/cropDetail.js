@@ -2,7 +2,7 @@ var React = require('react-native');
 var Separator = require('../helpers/separator');
 var Header = require('./header');
 var Switch = require('../helpers/switch');
-var moment = require('moment');
+// var moment = require('moment');
 
 
 var {
@@ -88,10 +88,10 @@ class CropDetail extends React.Component {
     // and dates need to be comma separated in the constructor
     // also, the dates are zero based.
     // only need the month and the day
-    var now = moment().format('MMM Do YY');
+    // var now = moment().format('MMM Do YY');
     // var date = new Date(date);
     // return date.getDate();
-    return now;
+    return date;
   }
   render() {
     return (

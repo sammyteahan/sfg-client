@@ -20,7 +20,7 @@ var style = StyleSheet.create({
   },
   header: {
     backgroundColor: '#32526E',
-    height: 200,
+    height: 265,
     padding: 10,
     justifyContent: 'center'
   },

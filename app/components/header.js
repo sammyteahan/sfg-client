@@ -10,7 +10,7 @@ var {
 var style = StyleSheet.create({
   container: {
     backgroundColor: '#32526E',
-    height: 200,
+    height: 265,
     padding: 10,
     justifyContent: 'center'
   },
@@ -40,12 +40,15 @@ var style = StyleSheet.create({
 * @todo we are going to need to pass in the name of 
 * the icon in the props as well. Then we an show 
 * the correct icon in the correct compoenents
+*
+*
+* <Image source={require('image!icon-winter')} style={ style.image} />
+*
 */
 class Header extends React.Component {
   render() {
     return (
       <View style={ this.props.style }>
-        <Image source={require('image!icon-winter')} style={ style.image} />
         <Text style={ style.name }>{ this.props.content }</Text>
       </View>
     )
