@@ -2,8 +2,23 @@ var React = require('react-native');
 var Separator = require('../helpers/separator');
 var Header = require('./header');
 var Switch = require('../helpers/switch');
-// var moment = require('moment');
 
+var months = ['January', 'February', 'March', 'April',
+              'May', 'June', 'July', 'August', 'September',
+              'October', 'November', 'December'];
+
+
+function ordinal(n) {
+  if(n > 3 && n < 21) {
+    return 'th';
+  }
+  switch(n % 10) {
+    case 1: return "st";
+    case 2: return "nd";
+    case 3: return "rd";
+    default: return "th";
+  }
+}
 
 var {
   Text,
@@ -84,14 +99,10 @@ class CropDetail extends React.Component {
     return value ? 'Yes' : 'No';
   }
   formatDate(date) {
-    // is a string duuuuuh
-    // and dates need to be comma separated in the constructor
-    // also, the dates are zero based.
-    // only need the month and the day
-    // var now = moment().format('MMM Do YY');
-    // var date = new Date(date);
-    // return date.getDate();
-    return date;
+    var monthIndex = date.split('-')[1];
+    var day = date.split('-')[2];
+    var month = months[monthIndex - 1];
+    return month + ' ' + day + ordinal(day);
   }
   render() {
     return (
@@ -115,7 +126,7 @@ class CropDetail extends React.Component {
             </View>
             <View style={ style.dateContainer }>
               <Text style={ style.date }>End Date:</Text>
-              <Text style={style.date }>{ this.props.crop.plant_end_date }</Text>
+              <Text style={style.date }>{ this.formatDate(this.props.crop.plant_end_date) }</Text>
             </View>
           </View>
           <Separator />
