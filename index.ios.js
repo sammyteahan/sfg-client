@@ -30,8 +30,11 @@ class sfg extends React.Component {
     return (
       <NavigatorIOS
         style={ style.container }
+        barTintColor="#bdc3c7"
+        tintColor="#32526E"
+        titleTextColor="#32526E"
         initialRoute={{
-          title: 'SFG',
+          title: 'Home',
           component: Dashboard
         }} />
     );

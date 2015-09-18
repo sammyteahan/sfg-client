@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
   cropDetail(id) {
     api.getCrop(id).then((response) => {
       this.props.navigator.push({
-        title: 'Crop Detail',
+        title: '',
         component: CropDetail,
         passProps: {
           crop: response,

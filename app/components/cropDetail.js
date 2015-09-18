@@ -51,8 +51,9 @@ var style = StyleSheet.create({
     alignItems: 'center'
   },
   date: {
-    justifyContent: 'center',
-    fontSize: 18
+    color: '#484848',
+    fontSize: 20,
+    flex: 1
   },
   header: {
     backgroundColor: '#32526E',
@@ -104,13 +105,46 @@ class CropDetail extends React.Component {
     var month = months[monthIndex - 1];
     return month + ' ' + day + ordinal(day);
   }
+  /**
+  * @description old date view
+  *
+  * <View style={ style.rowContainer }>
+  *   <View style={ style.dateContainer }>
+  *     <Text style={ style.date }>Start Date:</Text>
+  *     <Text style={style.date }>{ this.formatDate(this.props.crop.plant_start_date) }</Text>
+  *   </View>
+  *   <View style={ style.dateContainer }>
+  *     <Text style={ style.date }>End Date:</Text>
+  *     <Text style={style.date }>{ this.formatDate(this.props.crop.plant_end_date) }</Text>
+  *   </View>
+  * </View>
+  * 
+  */
+  getNotes() {
+    var notes = this.props.crop.notes;
+    if(!notes) {
+      return (
+        <View style={ style.noteContainer }>
+          <Text style={ style.name }>Notes:</Text>
+          <Text style={ style.notes }>No notes to display for { this.props.crop.name } at this time.</Text>
+        </View>
+      )
+    } else {
+      return (
+        <View style={ style.noteContainer }>
+          <Text style={ style.name }>Notes:</Text>
+          <Text style={ style.notes }>{ this.props.crop.notes }</Text>
+        </View>
+      )
+    }
+  }
   render() {
     return (
       <ScrollView>
         <View style={ style.container }>
           <Header style={ this.makeBackground() } content={ this.props.crop.name } />
           <View style={ style.rowContainer }>
-            <Text style={ style.name }>Transplant:</Text>
+            <Text style={ style.name }>Transplant Seed:</Text>
             <Switch value={ this.getTransplant(this.props.crop.transplant) } />
           </View>
           <Separator />
@@ -120,20 +154,16 @@ class CropDetail extends React.Component {
           </View>
           <Separator />
           <View style={ style.rowContainer }>
-            <View style={ style.dateContainer }>
-              <Text style={ style.date }>Start Date:</Text>
-              <Text style={style.date }>{ this.formatDate(this.props.crop.plant_start_date) }</Text>
-            </View>
-            <View style={ style.dateContainer }>
-              <Text style={ style.date }>End Date:</Text>
-              <Text style={style.date }>{ this.formatDate(this.props.crop.plant_end_date) }</Text>
-            </View>
+            <Text style={ style.date }>Start Date:</Text>
+            <Text style={style.date }>{ this.formatDate(this.props.crop.plant_start_date) }</Text>
           </View>
           <Separator />
-          <View style={ style.noteContainer }>
-            <Text style={ style.name }>Notes:</Text>
-            <Text style={ style.notes }>{ this.props.crop.notes }</Text>
+          <View style={ style.rowContainer }>
+            <Text style={ style.date }>End Date:</Text>
+            <Text style={style.date }>{ this.formatDate(this.props.crop.plant_end_date) }</Text>
           </View>
+          <Separator />
+          { this.getNotes() }
         </View>
       </ScrollView>
     )
