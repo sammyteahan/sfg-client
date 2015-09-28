@@ -57,7 +57,7 @@ class Dashboard extends React.Component {
   goToSummer() {
     api.getSeasonCrops('summer').then((response) => {
       this.props.navigator.push({
-        title: 'Summer Crops',
+        title: 'Crop List',
         component: CropList,
         passProps: {
           crops: response,
@@ -70,7 +70,7 @@ class Dashboard extends React.Component {
   goToSpring() {
     api.getSeasonCrops('spring').then((response) => {
       this.props.navigator.push({
-        title: 'Spring Crops',
+        title: 'Crop List',
         component: CropList,
         passProps: {
           crops: response,
@@ -83,7 +83,7 @@ class Dashboard extends React.Component {
   goToFall() {
     api.getSeasonCrops('fall').then((response) => {
       this.props.navigator.push({
-        title: 'Fall Crops',
+        title: 'Crop List',
         component: CropList,
         passProps: {
           crops: response,
@@ -96,7 +96,7 @@ class Dashboard extends React.Component {
   goToWinter() {
     api.getSeasonCrops('winter').then((response) => {
       this.props.navigator.push({
-        title: 'Winter Crops',
+        title: 'Crop List',
         component: CropList,
         passProps: {
           crops: response,

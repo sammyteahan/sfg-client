@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon-winter.png",
+      "filename" : "icon-spring.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon-winter-1.png",
+      "filename" : "icon-spring-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon-winter-2.png",
+      "filename" : "icon-spring-2.png",
       "scale" : "3x"
     }
   ],

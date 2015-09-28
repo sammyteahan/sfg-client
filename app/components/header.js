@@ -33,6 +33,14 @@ var style = StyleSheet.create({
     height: 100,
     marginTop: 10,
     width: 100
+  },
+  spring: {
+    alignSelf: 'center',
+    borderRadius: 0,
+    height: 100,
+    marginTop: 10,
+    width: 100,
+    flex: 0
   }
 });
 
@@ -42,13 +50,35 @@ var style = StyleSheet.create({
 * the correct icon in the correct compoenents
 *
 *
-* <Image source={require('image!icon-winter')} style={ style.image} />
+* <Image source={require('image!icon-winter')} style={style.image} />
+* <Image source={require('image!icon-sun')} style={style.image} />
 *
 */
 class Header extends React.Component {
+  formatHeader() {
+    if (this.props.content === 'Winter') {
+      return (
+        <Image source={require('image!icon-winter')} style={style.image} />
+      )
+    } else if (this.props.content === 'Summer') {
+      return (
+        <Image source={require('image!icon-sun')} style={style.image} />
+      )
+    } else if (this.props.content === 'Spring') {
+      return (
+        <Image source={require('image!icon-spring')} style={style.spring} />
+      )
+    }
+    else {
+      return (
+        <View />
+      )
+    }
+  }
   render() {
     return (
       <View style={ this.props.style }>
+        { this.formatHeader() }
         <Text style={ style.name }>{ this.props.content }</Text>
       </View>
     )
