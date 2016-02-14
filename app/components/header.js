@@ -16,7 +16,6 @@ var style = StyleSheet.create({
   },
   name: {
     alignSelf: 'center',
-    justifyContent: 'center',
     color: 'white',
     fontSize: 30,
     marginTop: 10,
@@ -29,10 +28,10 @@ var style = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
-    borderRadius: 50,
-    height: 100,
+    borderRadius: 100,
+    height: 200,
     marginTop: 10,
-    width: 100
+    width: 200
   },
   spring: {
     alignSelf: 'center',
@@ -41,6 +40,13 @@ var style = StyleSheet.create({
     marginTop: 10,
     width: 100,
     flex: 0
+  },
+  headerImg: {
+    alignSelf: 'center',
+    borderRadius: 75,
+    height: 150,
+    marginTop: 10,
+    width: 150
   }
 });
 
@@ -49,24 +55,30 @@ var style = StyleSheet.create({
 * the icon in the props as well. Then we an show 
 * the correct icon in the correct compoenents
 *
-*
-* <Image source={require('image!icon-winter')} style={style.image} />
-* <Image source={require('image!icon-sun')} style={style.image} />
-*
+* <Image source={require('image!icon-test')} style={style.headerImg} />
+*        
 */
 class Header extends React.Component {
   formatHeader() {
     if (this.props.content === 'Winter') {
       return (
-        <Image source={require('image!icon-winter')} style={style.image} />
+        <Image source={require('image!icon-winter')} style={style.spring} />
       )
     } else if (this.props.content === 'Summer') {
       return (
-        <Image source={require('image!icon-sun')} style={style.image} />
+        <Image source={require('image!icon-sun')} style={style.spring} />
       )
     } else if (this.props.content === 'Spring') {
       return (
         <Image source={require('image!icon-spring')} style={style.spring} />
+      )
+    } else if (this.props.content === 'Fall') {
+      return (
+        <Image source={require('image!icon-fall')} style={style.spring} />
+      )
+    } else if (this.props.content === 'Square Foot Garden') {
+      return (
+        <Image source={require('image!icon-test')} style={style.headerImg} />
       )
     }
     else {

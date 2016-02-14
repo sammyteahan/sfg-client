@@ -9,7 +9,9 @@ var {
   View,
   StyleSheet,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  ActivityIndicatorIOS,
+  StatusBarIOS
 } = React;
 
 
@@ -20,8 +22,12 @@ var style = StyleSheet.create({
   },
   header: {
     backgroundColor: '#32526E',
-    height: 265,
+    height: 250,
     padding: 10,
+    justifyContent: 'center'
+  },
+  hero: {
+    height: 265,
     justifyContent: 'center'
   },
   image: {
@@ -31,11 +37,21 @@ var style = StyleSheet.create({
     fontSize: 24,
     color: 'white',
     alignSelf: 'center'
+  },
+  animator: {
+    alignSelf: 'center'
   }
 });
 
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+  }
+  
   makeBackground(btn) {
     var styleObj = {
       flexDirection: 'row',
@@ -54,83 +70,45 @@ class Dashboard extends React.Component {
     }
     return styleObj;
   }
-  goToSummer() {
-    api.getSeasonCrops('summer').then((response) => {
-      this.props.navigator.push({
-        title: 'Crop List',
-        component: CropList,
-        passProps: {
-          crops: response,
-          headerTitle: 'Summer',
-          season: 1
-        }
-      });
+
+  goToDetail(season, index) {
+    let title = season.charAt(0).toUpperCase() + season.slice(1);
+    this.props.navigator.push({
+      title: 'Crop List',
+      component: CropList,
+      passProps: {
+        url: season,
+        headerTitle: title,
+        season: index
+      }
     });
   }
-  goToSpring() {
-    api.getSeasonCrops('spring').then((response) => {
-      this.props.navigator.push({
-        title: 'Crop List',
-        component: CropList,
-        passProps: {
-          crops: response,
-          headerTitle: 'Spring',
-          season: 2
-        }
-      });
-    });
-  }
-  goToFall() {
-    api.getSeasonCrops('fall').then((response) => {
-      this.props.navigator.push({
-        title: 'Crop List',
-        component: CropList,
-        passProps: {
-          crops: response,
-          headerTitle: 'Fall',
-          season: 3
-        }
-      });
-    });
-  }
-  goToWinter() {
-    api.getSeasonCrops('winter').then((response) => {
-      this.props.navigator.push({
-        title: 'Crop List',
-        component: CropList,
-        passProps: {
-          crops: response,
-          headerTitle: 'Winter',
-          season: 4
-        }
-      });
-    });
-  }
+
   render() {
     return (
       <View style={ style.container }>
-        <Header style={ style.header } content='SFG' />
+        <Header style={ style.header } content='Square Foot Garden' />
         <TouchableHighlight
           style={ this.makeBackground(0) }
-          onPress={ this.goToSpring.bind(this) }
+          onPress={ this.goToDetail.bind(this, 'spring', 2) }
           underlayColor='#88D4F5'>
             <Text style={ style.buttonText }>Spring</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={ this.makeBackground(1) }
-          onPress={ this.goToWinter.bind(this) }
+          onPress={ this.goToDetail.bind(this, 'winter', 4) }
           underlayColor='#88D4F5'>
             <Text style={ style.buttonText }>Winter</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={ this.makeBackground(2) }
-          onPress={ this.goToFall.bind(this) }
+          onPress={ this.goToDetail.bind(this, 'fall', 3) }
           underlayColor='#88D4F5'>
             <Text style={ style.buttonText }>Fall</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={ this.makeBackground(3) }
-          onPress={ this.goToSummer.bind(this) }
+          onPress={ this.goToDetail.bind(this, 'summer', 1) }
           underlayColor='#88D4F5'>
             <Text style={ style.buttonText }>Summer</Text>
         </TouchableHighlight>

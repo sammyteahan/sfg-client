@@ -10,13 +10,14 @@ var {
   View,
   StyleSheet,
   TouchableHighlight,
+  ActivityIndicatorIOS,
   ScrollView
 } = React;
 
 
 var style = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   header: {
     height: 250,
@@ -52,11 +53,33 @@ var style = StyleSheet.create({
   description: {
     fontSize: 14,
     paddingBottom: 5
+  },
+  spinner: {
+    alignSelf: 'center',
+    marginTop: 50
   }
 });
 
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      crops: [],
+      apiUrl: this.props.url
+    }
+  }
+
+  componentDidMount() {
+    api.getSeasonCrops(this.state.apiUrl).then((response) => {
+      this.setState({
+        isLoading: false,
+        crops: response
+      });
+    });
+  }
+
   makeBackground(btn) {
     var styleObj = {
       height: 250,
@@ -74,18 +97,20 @@ class Dashboard extends React.Component {
     }
     return styleObj;
   }
+
   cropDetail(id) {
     api.getCrop(id).then((response) => {
       this.props.navigator.push({
         title: '',
         component: CropDetail,
         passProps: {
-          crop: response,
+          id: id,
           headerTitle: 'Detail'
         }
       });
     });
   }
+
   getTier(val) {
     if(val === '1') {
       return 'High';
@@ -95,10 +120,11 @@ class Dashboard extends React.Component {
       return 'Low';
     }
   }
+
   render() {
-    var crops = this.props.crops;
+    var crops = this.state.crops;
     var list;
-    if (crops.length === 0) {
+    if (crops.length === 0 && !this.state.isLoading) {
       crops.push(1);
       list = crops.map((item, index) => {
         return (
@@ -130,6 +156,12 @@ class Dashboard extends React.Component {
       <ScrollView style={ style.container }>
         <Header style={ this.makeBackground() } content={ this.props.headerTitle } />
         {{ list }}
+         <ActivityIndicatorIOS
+          animating={ this.state.isLoading }
+          color='#111'
+          style={ style.spinner }
+          size='large'>
+        </ActivityIndicatorIOS>
       </ScrollView>
     )
   }
@@ -137,12 +169,12 @@ class Dashboard extends React.Component {
 
 
 /**
-* Throw error if crop data doesn't come
+* @desc Throw error if crop data doesn't come
 * back as an array, or headerTitle isn't
 * a string.
 */
 Dashboard.propTypes = {
-  crops: React.PropTypes.array.isRequired,
+  url: React.PropTypes.string.isRequired,
   headerTitle: React.PropTypes.string.isRequired
 }
 
