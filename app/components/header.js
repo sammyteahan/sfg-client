@@ -14,9 +14,18 @@ var style = StyleSheet.create({
     padding: 10,
     justifyContent: 'center'
   },
+  header: {
+    backgroundColor: '#32526E',
+    // justifyContent: 'space-around',
+    justifyContent: 'center',
+    height: 200,
+    flex: 1
+  },
   name: {
     alignSelf: 'center',
     color: 'white',
+    // justifyContent: 'flex-end',
+    // color: 'white',
     fontSize: 30,
     marginTop: 10,
     marginBottom: 5
@@ -37,16 +46,19 @@ var style = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 0,
     height: 100,
-    marginTop: 10,
     width: 100,
     flex: 0
   },
   headerImg: {
     alignSelf: 'center',
-    borderRadius: 75,
+    borderRadius: 0,
     height: 150,
-    marginTop: 10,
     width: 150
+  },
+  test: {
+    alignSelf: 'center',
+    borderRadius: 0,
+    flex: 0
   }
 });
 
@@ -70,7 +82,7 @@ class Header extends React.Component {
       )
     } else if (this.props.content === 'Spring') {
       return (
-        <Image source={require('image!icon-spring')} style={style.spring} />
+        <Image source={require('image!icon-leaf')} style={style.test} />
       )
     } else if (this.props.content === 'Fall') {
       return (
@@ -78,7 +90,7 @@ class Header extends React.Component {
       )
     } else if (this.props.content === 'Square Foot Garden') {
       return (
-        <Image source={require('image!icon-test')} style={style.headerImg} />
+        <Image source={require('image!icon-main')} style={style.headerImg} />
       )
     }
     else {
@@ -87,6 +99,9 @@ class Header extends React.Component {
       )
     }
   }
+  /**
+  *
+  */
   render() {
     return (
       <View style={ this.props.style }>

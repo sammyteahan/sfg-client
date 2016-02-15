@@ -45,9 +45,6 @@ class sfg extends React.Component {
         barTintColor="#bdc3c7"
         tintColor="#32526E"
         titleTextColor="#32526E"
-        // barTintColor="#32526E"
-        // tintColor="#fff"
-        // titleTextColor="#fff"
         shadowHidden="true"
         initialRoute={{
           title: 'Home',

@@ -143,9 +143,11 @@ class Dashboard extends React.Component {
               <TouchableHighlight
                 onPress={ this.cropDetail.bind(this, crops[index].pk) }
                 underlayColor='transparent'>
-                <Text style={ style.name }>{ crops[index].name }</Text>
+                <View>
+                  <Text style={ style.name }>{ crops[index].name }</Text>
+                  <Text style={ style.tierStyle }>Success Rate: { this.getTier(crops[index].tier) }</Text>
+                </View>
               </TouchableHighlight>
-              <Text style={ style.tierStyle }>Success Rate: { this.getTier(crops[index].tier) }</Text>
             </View>
             <Separator />
           </View>

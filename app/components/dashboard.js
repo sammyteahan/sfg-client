@@ -22,9 +22,8 @@ var style = StyleSheet.create({
   },
   header: {
     backgroundColor: '#32526E',
-    height: 250,
-    padding: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flex: 1
   },
   hero: {
     height: 265,
@@ -40,6 +39,9 @@ var style = StyleSheet.create({
   },
   animator: {
     alignSelf: 'center'
+  },
+  child: {
+    flex: 1
   }
 });
 
@@ -87,31 +89,35 @@ class Dashboard extends React.Component {
   render() {
     return (
       <View style={ style.container }>
-        <Header style={ style.header } content='Square Foot Garden' />
-        <TouchableHighlight
-          style={ this.makeBackground(0) }
-          onPress={ this.goToDetail.bind(this, 'spring', 2) }
-          underlayColor='#88D4F5'>
-            <Text style={ style.buttonText }>Spring</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={ this.makeBackground(1) }
-          onPress={ this.goToDetail.bind(this, 'winter', 4) }
-          underlayColor='#88D4F5'>
-            <Text style={ style.buttonText }>Winter</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={ this.makeBackground(2) }
-          onPress={ this.goToDetail.bind(this, 'fall', 3) }
-          underlayColor='#88D4F5'>
-            <Text style={ style.buttonText }>Fall</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={ this.makeBackground(3) }
-          onPress={ this.goToDetail.bind(this, 'summer', 1) }
-          underlayColor='#88D4F5'>
-            <Text style={ style.buttonText }>Summer</Text>
-        </TouchableHighlight>
+        <View style={ style.child }>
+          <Header style={ style.header } content='Square Foot Garden' />
+        </View>
+        <View style={ style.child }>
+          <TouchableHighlight
+            style={ this.makeBackground(0) }
+            onPress={ this.goToDetail.bind(this, 'spring', 2) }
+            underlayColor='#88D4F5'>
+              <Text style={ style.buttonText }>Spring</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={ this.makeBackground(1) }
+            onPress={ this.goToDetail.bind(this, 'winter', 4) }
+            underlayColor='#88D4F5'>
+              <Text style={ style.buttonText }>Winter</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={ this.makeBackground(2) }
+            onPress={ this.goToDetail.bind(this, 'fall', 3) }
+            underlayColor='#88D4F5'>
+              <Text style={ style.buttonText }>Fall</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={ this.makeBackground(3) }
+            onPress={ this.goToDetail.bind(this, 'summer', 1) }
+            underlayColor='#88D4F5'>
+              <Text style={ style.buttonText }>Summer</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     )
   }
