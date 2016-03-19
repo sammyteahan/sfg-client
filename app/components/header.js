@@ -82,7 +82,7 @@ class Header extends React.Component {
       )
     } else if (this.props.content === 'Spring') {
       return (
-        <Image source={require('image!icon-leaf')} style={style.test} />
+        <Image source={require('image!icon-cloud')} style={style.spring} />
       )
     } else if (this.props.content === 'Fall') {
       return (

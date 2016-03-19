@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
       justifyContent: 'center',
       flex: 1
     }
-    if(btn === 0) {
+    if (btn === 0) {
       styleObj.backgroundColor = '#41C3AC';
     } else if(btn === 1) {
       styleObj.backgroundColor = '#81B9C3';
