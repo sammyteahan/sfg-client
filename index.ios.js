@@ -19,20 +19,33 @@ var {
 
 var style = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#111111'
+    flex: 1
+    // backgroundColor: '#111111'
   }
 });
 
-
+/**
+* #bdc3c7
+* #8e44ad
+*/
 class sfg extends React.Component {
+  constructor(props) {
+    super(props); 
+    this.state = {
+      isTranslucent: true,
+      statusBar: true,
+      shadowBool: false
+    };
+  }
   render() {
+    console.log(this.state);
     return (
       <NavigatorIOS
         style={ style.container }
         barTintColor="#bdc3c7"
         tintColor="#32526E"
         titleTextColor="#32526E"
+        shadowHidden="true"
         initialRoute={{
           title: 'Home',
           component: Dashboard

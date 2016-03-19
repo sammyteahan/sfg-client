@@ -14,10 +14,18 @@ var style = StyleSheet.create({
     padding: 10,
     justifyContent: 'center'
   },
+  header: {
+    backgroundColor: '#32526E',
+    // justifyContent: 'space-around',
+    justifyContent: 'center',
+    height: 200,
+    flex: 1
+  },
   name: {
     alignSelf: 'center',
-    justifyContent: 'center',
     color: 'white',
+    // justifyContent: 'flex-end',
+    // color: 'white',
     fontSize: 30,
     marginTop: 10,
     marginBottom: 5
@@ -29,17 +37,27 @@ var style = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
-    borderRadius: 50,
-    height: 100,
+    borderRadius: 100,
+    height: 200,
     marginTop: 10,
-    width: 100
+    width: 200
   },
   spring: {
     alignSelf: 'center',
     borderRadius: 0,
     height: 100,
-    marginTop: 10,
     width: 100,
+    flex: 0
+  },
+  headerImg: {
+    alignSelf: 'center',
+    borderRadius: 0,
+    height: 150,
+    width: 150
+  },
+  test: {
+    alignSelf: 'center',
+    borderRadius: 0,
     flex: 0
   }
 });
@@ -49,24 +67,30 @@ var style = StyleSheet.create({
 * the icon in the props as well. Then we an show 
 * the correct icon in the correct compoenents
 *
-*
-* <Image source={require('image!icon-winter')} style={style.image} />
-* <Image source={require('image!icon-sun')} style={style.image} />
-*
+* <Image source={require('image!icon-test')} style={style.headerImg} />
+*        
 */
 class Header extends React.Component {
   formatHeader() {
     if (this.props.content === 'Winter') {
       return (
-        <Image source={require('image!icon-winter')} style={style.image} />
+        <Image source={require('image!icon-winter')} style={style.spring} />
       )
     } else if (this.props.content === 'Summer') {
       return (
-        <Image source={require('image!icon-sun')} style={style.image} />
+        <Image source={require('image!icon-sun')} style={style.spring} />
       )
     } else if (this.props.content === 'Spring') {
       return (
-        <Image source={require('image!icon-spring')} style={style.spring} />
+        <Image source={require('image!icon-cloud')} style={style.spring} />
+      )
+    } else if (this.props.content === 'Fall') {
+      return (
+        <Image source={require('image!icon-fall')} style={style.spring} />
+      )
+    } else if (this.props.content === 'Square Foot Garden') {
+      return (
+        <Image source={require('image!icon-main')} style={style.headerImg} />
       )
     }
     else {
@@ -75,6 +99,9 @@ class Header extends React.Component {
       )
     }
   }
+  /**
+  *
+  */
   render() {
     return (
       <View style={ this.props.style }>
