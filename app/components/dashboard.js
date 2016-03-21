@@ -90,7 +90,7 @@ class Dashboard extends React.Component {
     return (
       <View style={ style.container }>
         <View style={ style.child }>
-          <Header style={ style.header } content='Square Foot Garden' />
+          <Header style={ style.header } content='The Wealthy Earth' />
         </View>
         <View style={ style.child }>
           <TouchableHighlight
