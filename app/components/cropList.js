@@ -56,6 +56,11 @@ var style = StyleSheet.create({
   },
   spinner: {
     alignSelf: 'center',
+    // position: 'absolute',
+    // top: 0,
+    // bottom: 0,
+    // left: 0,
+    // right: 0,
     marginTop: 50
   }
 });
