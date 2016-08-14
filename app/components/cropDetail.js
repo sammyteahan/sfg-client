@@ -75,6 +75,7 @@ var style = StyleSheet.create({
     fontSize: 18
   },
   spinner: {
+    position: 'absolute',
     alignSelf: 'center',
     marginTop: 50
   }
@@ -138,7 +139,7 @@ class CropDetail extends React.Component {
 
   getNotes() {
     var notes = this.state.crop.notes;
-    if(!notes) {
+    if (!notes) {
       return (
         <View style={ style.noteContainer }>
           <Text style={ style.name }>Notes:</Text>

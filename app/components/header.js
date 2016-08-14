@@ -52,8 +52,8 @@ var style = StyleSheet.create({
   headerImg: {
     alignSelf: 'center',
     borderRadius: 0,
-    height: 150,
-    width: 150
+    height: 100,
+    width: 100
   },
   test: {
     alignSelf: 'center',
@@ -74,23 +74,23 @@ class Header extends React.Component {
   formatHeader() {
     if (this.props.content === 'Winter') {
       return (
-        <Image source={require('image!icon-winter')} style={style.spring} />
+        <Image source={require('image!winter')} style={style.spring} />
       )
     } else if (this.props.content === 'Summer') {
       return (
-        <Image source={require('image!icon-sun')} style={style.spring} />
+        <Image source={require('image!sun')} style={style.spring} />
       )
     } else if (this.props.content === 'Spring') {
       return (
-        <Image source={require('image!icon-cloud')} style={style.spring} />
+        <Image source={require('image!rain')} style={style.spring} />
       )
     } else if (this.props.content === 'Fall') {
       return (
         <Image source={require('image!icon-fall')} style={style.spring} />
       )
-    } else if (this.props.content === 'Square Foot Garden') {
+    } else if (this.props.content === 'The Wealthy Earth') {
       return (
-        <Image source={require('image!icon-main')} style={style.headerImg} />
+        <Image source={require('image!hand')} style={style.headerImg} />
       )
     }
     else {
